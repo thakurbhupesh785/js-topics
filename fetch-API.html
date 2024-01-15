@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fetch API</title>
+</head>
+<body>
+  <button class="js-button">Get a Fact</button>
+  <p class="js-fact"></p>
+  
+  <script>
+    const URL = 'https://cat-fact.herokuapp.com/facts';
+    let fact = document.querySelector('.js-fact')
+    const btn = document.querySelector('.js-button')
+
+    const getFacts = async () => {
+      console.log('getting data.....')
+      let response = await fetch(URL);
+      console.log(response);
+      let data = await response.json(); 
+      //json() in API makes the data in readable form
+      fact.innerHTML = data[4].text;
+     }
+
+     btn.addEventListener('click',getFacts);
+  </script>
+</body>
+</html>
